@@ -1,0 +1,67 @@
+﻿@model Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @await Html.PartialAsync("Breadcrumbs.cshtml", (List<Breadcrumb>)ViewBag.Breadcrumbs)
+        <hr>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BookCode" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AuthorCode" class="control-label"></label>
+                <select asp-for="AuthorCode" class="form-control" asp-items="ViewBag.AuthorsID">
+                    <option>-- Select Author --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenreCode" class="control-label"></label>
+                <select asp-for="GenreCode" class="form-control" asp-items="ViewBag.GenreID">
+                    <option>-- Select Genre --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfPublishing" class="control-label"></label>
+                <input asp-for="YearOfPublishing" class="form-control" />
+                <span asp-validation-for="YearOfPublishing" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfWriting" class="control-label"></label>
+                <input asp-for="YearOfWriting" class="form-control" />
+                <span asp-validation-for="YearOfWriting" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishingCode" class="control-label"></label>
+                <select asp-for="PublishingCode" class="form-control" asp-items="ViewBag.PublishingID">
+                    <option>-- Select Author --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

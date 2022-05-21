@@ -1,0 +1,18 @@
+﻿.genres-list {
+    list-style: none;
+    padding: 0px;
+    display: none;
+    width: auto;
+}
+li{
+    cursor: pointer;
+}
+h4{
+    margin-top: 20px;
+}
+.icon-menu{
+    cursor:pointer;
+}
+.icon-menu:hover>ul {
+    display: block;
+}

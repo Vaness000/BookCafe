@@ -1,0 +1,20 @@
+﻿@model IEnumerable<BookShop.Models.Genre>
+
+@{
+    ViewData["Title"] = "Start Page";
+}
+<link rel="stylesheet" type="text/css" href="~/css/welcome.css">
+<link rel="stylesheet" type="text/css" href="~/css/icons/css/fontello.css">
+<h2>Welcome to the book shop</h2>
+<h4>There are our books:</h4>
+<a asp-controller="Books">go to the books</a>
+<h4>There are genres of our books:</h4>
+<div class="icon-menu"><ul class="genres-list">
+    @foreach (var item in Model)
+    {
+        <li>
+            <a asp-controller="Books" asp-route-genreId="@item.GenreCode">@Html.DisplayFor(modelItem => item.Title)</a>
+        </li>
+    }
+</ul>
+</div>

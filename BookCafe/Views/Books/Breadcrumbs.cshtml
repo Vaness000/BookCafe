@@ -1,0 +1,8 @@
+﻿@model IEnumerable<Breadcrumb>
+<link rel="stylesheet" href="~/css/site.css" />
+<ul class="breadcrumbs">
+    @foreach (var breadcrumb in Model)
+    {
+    <li><a asp-controller="@breadcrumb.Controller" asp-action="@breadcrumb.Action">@breadcrumb.Title</a></li>
+    }
+</ul>

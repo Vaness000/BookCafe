@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Book>
+
+@{
+    ViewData["Title"] = "Books List";
+}
+<link rel="stylesheet" href="~/css/MyLayout.css">
+@await Html.PartialAsync("Breadcrumbs.cshtml", (List<Breadcrumb>)ViewBag.Breadcrumbs)
+<hr>
+<a asp-action="Create">Create New</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.AuthorCodeNavigation.Fio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.GenreCodeNavigation.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.YearOfPublishing)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.YearOfWriting)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(modelItem => modelItem.PublishingCodeNavigation.Title)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+    @foreach (var book in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => book.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.AuthorCodeNavigation.Fio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.GenreCodeNavigation.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.YearOfPublishing)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.YearOfWriting)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => book.PublishingCodeNavigation.Title)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@book.BookCode">Edit</a>|
+                <a asp-action="Image" asp-route-id="@book.Img">Show Image</a>|
+                <a asp-action="EditImage" asp-route-id="@book.Img">Edit Image</a>
+            </td>
+        </tr>
+    }
+    @section FooterInfo{
+        <span class="categoties-warning">User can't edit categories</span>
+    }
+</table>
